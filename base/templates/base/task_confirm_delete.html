@@ -1,0 +1,15 @@
+{% extends "base/_layouts/default.html" %}
+{% block content%}
+<div class="row">
+	<div class="s12 m3"></div>
+	<div class="s12 m6 box silver">
+		<a href="{% url "tasks" %}" class="link blue-text">Go back</a>
+		<form method="post">
+			{% csrf_token %}
+			<p class="center-text navy-text">Are you sure you want to delete this task?</p>
+			<h2 class="center-text green-text">"{{ task }}"</h2>
+			<input type="submit" value="Delete" class="button red silver-text"/>
+		</form>
+	</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,15 @@
+{% extends "base/_layouts/default.html" %}
+{% block content%}
+<div class="row">
+	<div class="s12 m3"></div>
+	<div class="s12 m6 box silver">
+		<a href="{% url "tasks" %}" class="link blue-text">Go back</a>
+		<h1 class="navy-text center-text">Add a Task</h1>
+		<form action="" method="post">
+			{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Submit" class="button green silver-text"/>
+		</form>
+	</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "base/_layouts/default.html" %}
+{% block content%}
+
+<div>
+    <div class="row">
+        <div class="s12 m3"></div><!--Agregar offsets a columns para elimiar este ajuste-->
+        <div class="box silver s12 m6 push-up">
+            <h1 class="navy-text center-text">My TODO App</h1>
+            <h2 class="blue-text center-text">Login</h2>
+            <form method="post">
+                {% csrf_token %} {{form.as_p}}
+                <input type="submit" value="Login" class="button green silver-text" />
+            </form>
+            <p>Don't have an account? <a href="{% url "register" %}" class="link blue-text">Register</a></p>
+        </div>
+    </div>
+</div>
+{% endblock content %}
