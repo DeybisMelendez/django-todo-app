@@ -6,12 +6,13 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>TODO App</title>
+		<link rel="stylesheet" href="{% static 'css/jelly.min.css' %}" />
 		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
 			rel="stylesheet"
-			href="{% static 'css/visible-border.min.css' %}"
 		/>
 	</head>
-	<body class="blue">
-		<div class="container">{% block content %} {% endblock content%}</div>
+	<body class="teal-bg">
+		<div>{% block content %} {% endblock content%}</div>
 	</body>
 </html>

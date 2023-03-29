@@ -1,48 +1,44 @@
 {% extends "base/_layouts/default.html" %}
 {% block content%}
-<div class="row">
-	<div class="s12 m3"></div>
-	<div class="s12 m6">
-		<div class="box silver">
+<div class="flex justify-center">
+	<div class="grid s12 m6">
+		<div class="s12 panel white-bg">
 			{% if request.user.is_authenticated %}
-			<p class="right-text"><a href="{% url "logout" %}" class="link red-text right">Logout</a></p>
-			<h1 class="maroon-text">Hello! {{request.user}}.</h1>
-			<p class="navy-text">You have <i>{{ count }}</i> incomplete tasks.
-				<a href={% url 'create-task' %} class="link green-text">Add Task</a>
+			<p class="right-text teal">{{request.user}}, <a href="{% url "logout" %}" class="link red right">Logout</a></p>
+			<h1 class="hot-pink center-text">Tasks</h1>
+			<p class="orange">You have <i>{{ count }}</i> incomplete tasks.
+				<a href={% url 'create-task' %} class="link blue">Add Task</a>
 			</p>
 			{% else %}
 			<a href="{% url "login"%}">Login</a>
 			{% endif %}
-		</div>
-		<div class="box silver push-up">
-			<form method="get" class="row isolated">
-				<input type="text" name="search-area" value="{{search_input}}" class="s12 m9">
-				<input type="submit" value="Search" class="s12 m3 button blue silver-text">
+			<form method="get">
+				<input type="text" name="search-area" value="{{search_input}}" placeholder="Search">
 			</form>
 		</div>
-		<table style="width:100%;margin:0 auto;" class="s12">
-			<tr>
-				<th class="purple">Created</th>
-				<th class="purple">Items</th>
-				<th class="purple" colspan=3>Actions</th>
+		<table class="s12">
+			<tr >
+				<th class="hot-pink-bg white">Created</th>
+				<th class="hot-pink-bg white">Items</th>
+				<th class="hot-pink-bg white" colspan=3>Actions</th>
 			</tr>
 			{% for task in tasks %}
 			<tr>
-				<td>{{ task.create|date:'Y-m-d H:i' }}</td>
-				<td>
+				<td class="white-bg">{{ task.create|date:'Y-m-d' }}</td>
+				<td class="white-bg">
 					{% if task.complete %}
 						<div class="task-complete-icon"></div>
-						<i><s><a href="{% url "task" task.id %}" class="link black-text">{{ task.title }}</a></s></i>
+						<i><s><a href="{% url "task" task.id %}" class="link gray-3">{{ task.title }}</a></s></i>
 					{% else %}
 						<div class="task-incomplete-icon"></div>
-						<p><a href="{% url "task" task.id %}" class="link blue-text">{{ task.title }}</a></p>
+						<p><a href="{% url "task" task.id %}" class="link blue">{{ task.title }}</a></p>
 					{% endif %}
 				</td>
-				<td><a href="{% url "task-update" task.id %}" class="link orange-text">Edit</a></td>
-				<td><a href="{% url "task-delete" task.id %}" class="link red-text">Delete</a></td>
+				<td class="white-bg"><a href="{% url "task-update" task.id %}" class="orange light-hover"><i class="material-icons">edit</i></a></td>
+				<td class="white-bg"><a href="{% url "task-delete" task.id %}" class="red light-hover"><i class="material-icons">delete</i></a></td>
 			</tr>
 			{% empty %}
-			<tr><td colspan=2>No item in list</td></tr>
+			<tr><td class="white-bg" colspan=4>No item in list</td></tr>
 			{% endfor %}
 		</table>
 	</div>

@@ -1,12 +1,11 @@
 {% extends "base/_layouts/default.html" %} {% block content%}
 <div class="row">
 	<div class="s12 m3"></div>
-	<div class="s12 m6 box silver">
-        <a href="{% url "tasks" %}" class="link blue-text">Go back</a>
-		<h1 class="center-text navy-text">Task</h1>
-		<h2 class="center-text maroon-text">{{ task.title }}</h2>
-		<p class="right-text"><i>Created: {{task.create}}</i></p>
-        <p class="right-text red-text"><i>Completed: {{task.complete}}</i></p>
+	<div class="s12 m6 panel white-bg">
+        <a href="{% url "tasks" %}" class="blue light-hover"><i class="material-icons">arrow_back</i></a>
+		<h1 class="center-text hot-pink">{{ task.title }}</h1>
+		<p class="right-text gray-2"><i>Created: {{task.create}}</i></p>
+        <p class="right-text red"><i>Completed: {{task.complete}}</i></p>
 		<p>{{ task.description}}</p>
 	</div>
 </div>
